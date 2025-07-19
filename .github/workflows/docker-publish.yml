@@ -1,44 +1,35 @@
 name: Create and publish a Docker image
-
 on:
-  push:
-    branches: ['release']  # ← Spustí se pouze při změně ve větvi "release"
-
+  release:
+    types: [published, prereleased] # ← Spustí se při publikování nebo předběžném releasu
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
-
     permissions:
       contents: read
       packages: write
       attestations: write
       id-token: write
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Extract Docker metadata (tags, labels)
         id: meta
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=ref,event=branch
-            type=semver,pattern={{version}}  # ← toto vygeneruje tag jako "1.2.3"
+            type=semver,pattern={{version}} # ← toto vygeneruje tag jako "1.2.3" nebo "1.2.3-beta.1" z releasu
             type=raw,value=latest
-
       - name: Build and push Docker image
         id: push
         uses: docker/build-push-action@v5
@@ -47,7 +38,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v2
         with:
