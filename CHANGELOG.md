@@ -1,20 +1,18 @@
-# [1.1.0](https://github.com/ninjaneers-team/dss-docker/compare/v1.0.1...v1.1.0) (2019-11-07)
-
-
-### Features
-
-* **docker:** switch to openjdk:8-alpine version ([d45fd8b](https://github.com/ninjaneers-team/dss-docker/commit/d45fd8bc8c5010775adf4c1b7496acfdd604f9e2))
-
-## [1.0.1](https://github.com/ninjaneers-team/dss-docker/compare/v1.0.0...v1.0.1) (2019-11-07)
-
-
-### Bug Fixes
-
-* **Readme:** add hub url ([ad52923](https://github.com/ninjaneers-team/dss-docker/commit/ad5292355e0be72a873098f9374558c302a0665c))
-
-# 1.0.0 (2019-11-07)
-
+# [2.0.0](https://github.com/vysmaty/dockerized-dss/pkgs/container/dockerized-dss) (2025-07-19)
 
 ### Features
 
-* **init:** initial container commit ([f085315](https://github.com/ninjaneers-team/dss-docker/commit/f085315fdca108e222da507c83dd7ef3d0f6367e))
+-   **docker:** Upgrade base image to `eclipse-temurin:21-jdk-alpine` and DSS bundle to `6.2`
+    
+-   **docker:** Upgrade Tomcat to version `11.0.4`
+    
+-   **docker:** Expose port `8080`
+    
+
+### Refactor
+
+-   **docker:** Consolidate installation and download steps, add cleanup
+        
+-   **docker:** Ensure `startup.sh` has executable permissions
+    
+-   **docker:** Update `startup.sh` to reflect new Tomcat version and direct `catalina.sh run`

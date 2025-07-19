@@ -1,7 +1,26 @@
-version: '3.6'
-
 services:
   dss:
-    image: 'ninjaneers/dss:latest'
+    image: ghcr.io/vysmaty/dockerized-dss:latest
+    container_name: dss
+    hostname: dss
+    # networks:
+    #   - proxy
     ports:
       - '8080:8080'
+
+    # environment:
+    #   JAVA_OPTS: "-XX:+UseContainerSupport -Xms256m -Xmx512m" #If you need to limit memory usage.
+    # mem_limit: 700m                                           #If you need to limit memory usage.
+    
+    # labels:
+      # Optional for Watchtower
+      #- "com.centurylinklabs.watchtower.enable=true"
+      # Optional for Traefik
+      #- "traefik.enable=true"
+      #- "traefik.http.services.dss.loadbalancer.server.port=8080"
+      #- "traefik.http.routers.dss.middlewares=noindex@file"
+
+# Optional for Traefik
+# networks:
+#   proxy:
+#     external: true

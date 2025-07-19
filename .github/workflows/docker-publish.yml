@@ -1,7 +1,7 @@
 name: Create and publish a Docker image
 on:
   release:
-    types: [published, prereleased] # ← Spustí se při publikování nebo předběžném releasu
+    types: [published, prereleased] # ← Starts on publication or pre-release
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
@@ -28,8 +28,14 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=semver,pattern={{version}} # ← toto vygeneruje tag jako "1.2.3" nebo "1.2.3-beta.1" z releasu
-            type=raw,value=latest
+            type=ref,event=branch
+            type=ref,event=tag
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=sha,prefix=sha-
+            type=raw,value=latest,enable={{is_default_branch}}
       - name: Build and push Docker image
         id: push
         uses: docker/build-push-action@v5
