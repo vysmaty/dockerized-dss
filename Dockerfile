@@ -1,17 +1,22 @@
-FROM openjdk:8-alpine
-LABEL maintainer="info@ninjaneers.de"
-LABEL "author"="Dennis Fricke"
-LABEL "company"="Ninjaneers GmbH"
+FROM openjdk:17-alpine
+LABEL maintainer="vysmaty@users.noreply.github.com"
+LABEL "author"="vysmaty"
 
-RUN  apk update && apk add unzip
+# Instalation & download & unzip
+RUN apk update && apk add --no-cache unzip curl && \
+    curl -o /tmp/dss-demo-bundle.zip https://ec.europa.eu/digital-building-blocks/artifact/repository/esignaturedss/eu/europa/ec/joinup/sd-dss/dss-demo-bundle/6.2/dss-demo-bundle-6.2.zip && \
+    unzip /tmp/dss-demo-bundle.zip -d /tmp && \
+    mv /tmp/dss-demo-bundle-6.2 /dss && \
+    chmod +x /dss/apache-tomcat-11.0.4/bin/catalina.sh && \
+    rm -rf /tmp/*
 
-ADD https://ec.europa.eu/cefdigital/artifact/repository/esignaturedss/eu/europa/ec/joinup/sd-dss/dss-demo-bundle/5.5/dss-demo-bundle-5.5.zip /tmp
-RUN unzip /tmp/dss-demo-bundle-5.5.zip -d /tmp
-RUN mv /tmp/dss-demo-bundle-5.5 /dss
-
-RUN chmod +x /dss/apache-tomcat-8.5.45/bin/catalina.sh
-
+# Copy startup script
 COPY ./startup.sh /dss/
+RUN chmod +x /dss/startup.sh
 
+# Expose Tomcat port
+EXPOSE 8080
+
+# Start
 ENTRYPOINT [ "/dss/startup.sh" ]
 CMD [ "/bin/sh" ]
