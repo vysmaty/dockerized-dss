@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
-echo "`/bin/sh /dss/apache-tomcat-8.5.45/bin/startup.sh`"
-exec "$@"
+echo "Starting DSS demo (Tomcat 11.0.4)..."
+/dss/apache-tomcat-11.0.4/bin/catalina.sh run
