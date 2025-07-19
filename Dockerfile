@@ -1,4 +1,4 @@
-FROM openjdk:17-alpine
+FROM eclipse-temurin:21-jdk-alpine
 LABEL maintainer="vysmaty@users.noreply.github.com"
 LABEL "author"="vysmaty"
 
