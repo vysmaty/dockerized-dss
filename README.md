@@ -1,17 +1,12 @@
-# Docker container for Digital Signature Service (eSignature) of CEF Digital
+# Docker container for Digital Signature Service
 
-[![Build Status](https://travis-ci.org/ninjaneers-team/dss-docker.svg?branch=master)](https://travis-ci.org/ninjaneers-team/dss-docker)
+[![Build Status](![Docker Publish](https://github.com/vysmaty/dockerized-dss/actions/workflows/docker-publish.yml/badge.svg))
 
-This Dockerfile will provide the current Digital Signature Service Demo of CEF in version 5.5
+This Dockerfile will provide the current Digital Signature Service Demo in version 6.2 aka DSS Demonstration WebApp
 
-@see [eSignature Service](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/DSS)
+@see [eSignature Service]([https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/DSS](https://ec.europa.eu/digital-building-blocks/sites/display/DIGITAL/Digital+Signature+Service+-++DSS))
 
 ## Usage
 
 ### Docker run
-`docker run --rm --ti -p 8080:8080 ninjaneers/dss:latest`
-
-
-### Docker Compose
-
-`docker-compose up` will expose DSS on http://localhost:8080
+`docker run --rm --ti -p 8080:8080 ghcr.io/vysmaty/dockerized-dss:release`
