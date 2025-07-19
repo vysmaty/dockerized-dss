@@ -1,6 +1,6 @@
 # Docker container for Digital Signature Service
 
-[![Build Status](![Docker Publish](https://github.com/vysmaty/dockerized-dss/actions/workflows/docker-publish.yml/badge.svg))
+![Docker Publish](https://github.com/vysmaty/dockerized-dss/actions/workflows/docker-publish.yml/badge.svg)
 
 This Dockerfile will provide the current Digital Signature Service Demo in version 6.2 aka DSS Demonstration WebApp
 
