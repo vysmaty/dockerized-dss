@@ -4,7 +4,7 @@
 
 This Dockerfile will provide the current Digital Signature Service Demo in version 6.2 aka DSS Demonstration WebApp
 
-@see [eSignature Service]([https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/DSS](https://ec.europa.eu/digital-building-blocks/sites/display/DIGITAL/Digital+Signature+Service+-++DSS))
+@see [eSignature Service](https://ec.europa.eu/digital-building-blocks/sites/display/DIGITAL/Digital+Signature+Service+-++DSS)
 
 ## Usage
 
