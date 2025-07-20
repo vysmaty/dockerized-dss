@@ -9,4 +9,19 @@ This Dockerfile will provide the current Digital Signature Service Demo in versi
 ## Usage
 
 ### Docker run
-`docker run --rm --ti -p 8080:8080 ghcr.io/vysmaty/dockerized-dss:release`
+
+`docker run --rm --ti -p 8080:8080 ghcr.io/vysmaty/dockerized-dss:latest`
+
+### Docker Compose
+
+Create a `docker-compose.yml` file with the following content:
+
+```yaml
+services:
+  dss:
+    image: ghcr.io/vysmaty/dockerized-dss:latest
+    ports:
+      - '8080:8080'
+```
+
+See docker-compose.yml for more options.
