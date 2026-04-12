@@ -2,7 +2,7 @@
 
 ![Docker Publish](https://github.com/vysmaty/dockerized-dss/actions/workflows/docker-publish.yml/badge.svg)
 
-This Dockerfile will provide the current Digital Signature Service Demo in version 6.2 aka DSS Demonstration WebApp
+This Dockerfile will provide the current Digital Signature Service Demo in version 6.4 aka DSS Demonstration WebApp
 
 @see [eSignature Service](https://ec.europa.eu/digital-building-blocks/sites/display/DIGITAL/Digital+Signature+Service+-++DSS)
 
